@@ -1,0 +1,13 @@
+**/node_modules/
+**/coverage/
+**/.pnpm-debug
+**/dist
+.DS_Store
+.spress
+.vercel
+dist
+.idea
+/test
+*.zip
+
+**/.vitepress/cache/
