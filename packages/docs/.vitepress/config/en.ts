@@ -6,7 +6,7 @@ const pkg = require("@yuwen/ui/package.json");
 
 export default defineConfig({
   lang: "en-US",
-  description: "A good UI framework",
+  description: "Front-end learning notes.",
 
   themeConfig: {
     nav: nav(),
@@ -14,6 +14,7 @@ export default defineConfig({
     sidebar: {
       "/en/docs/": { base: "/en/docs/", items: sidebarGuide() },
       "/en/components/": { base: "/en/components/", items: sidebarReference() },
+      "/en/tools/": { base: "/en/tools/", items: sidebarTools() },
     },
 
     editLink: {
@@ -39,6 +40,11 @@ function nav(): DefaultTheme.NavItem[] {
       text: "Components",
       link: "/en/components/button",
       activeMatch: "/en/components/",
+    },
+    {
+      text: "toolsDocs",
+      link: "/en/tools/docker",
+      activeMatch: "/en/tools/",
     },
     {
       text: pkg.version,
@@ -75,6 +81,15 @@ function sidebarReference(): DefaultTheme.SidebarItem[] {
     {
       text: "Radio",
       link: "radio",
+    },
+  ];
+}
+
+function sidebarTools(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: "Docker install",
+      link: "docker",
     },
   ];
 }

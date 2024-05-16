@@ -1,34 +1,40 @@
 ---
 layout: home
 
-title: Yuwen UI
-titleTemplate: 二次封装的组件库
+title: Yuwen Utils
+titleTemplate: 前端学习
 
 hero:
-  name: Yuwen UI
-  text: 二次封装的组件库
-  tagline: 二次封装的组件库，使用起来更简单
+  name: Yuwen Utils
+  text: 前端学习
+  tagline: 前端学习，记录前端学习的点点滴滴
   image:
     src: /vitepress-logo-large.webp
-    alt: Yuwen UI
+    alt: Yuwen Utils
   actions:
     - theme: brand
       text: 起步
       link: /docs/introduction
     - theme: alt
       text: Github
-      link: https://github.com/element-plus/element-plus
+      link: https://github.com/yuwenOvO/yuwenUtils
 
 features:
-  - icon: 💡
-    title: 快速启动
-    details: 按需加载文件，无需打包！
-  - icon: ⚡️
-    title: 闪电般的热更新
-    details: 无论应用大小，热模块替换（HMR）始终保持快速。
+  - icon: 🎨
+    title: 二开组件
+    details: 二开组件，基于vue流行的组件库进行二次开发，使其更符合业务需求。
+    link: /components/button
+    linkText: 查看组件
+  - icon: 📚
+    title: 学习文档
+    details: 学习文档，记录前端学习的点点滴滴。
+    link: /docs/introduction
+    linkText: 查看文档
   - icon: 🛠️
-    title: 丰富的功能
-    details: 支持开箱即用的TypeScript、JSX、CSS等。
+    title: 软件工具安装文档
+    details: 软件工具安装，记录前端开发过程中的软件工具安装。
+    link: /tools/docker
+    linkText: 查看文档
 
 ---
 

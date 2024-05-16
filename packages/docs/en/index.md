@@ -1,34 +1,40 @@
 ---
 layout: home
 
-title: Yuwen UI
-titleTemplate: Component library for secondary packaging
+title: Yuwen Utils
+titleTemplate: Front-end learning
 
 hero:
-  name: Yuwen UI
-  text: Component library for secondary packaging
-  tagline: Component library for secondary packaging, which is easier to use
+  name: Yuwen Utils
+  text: Front-end learning
+  tagline: Front-end learning, record the bits and pieces of front-end learning
   image:
     src: /vitepress-logo-large.webp
-    alt: Yuwen UI
+    alt: Yuwen Utils
   actions:
     - theme: brand
       text: Get Started
       link: /docs/introduction
     - theme: alt
       text: Github
-      link: https://github.com/element-plus/element-plus
+      link: https://github.com/yuwenOvO/yuwenUtils
 
 features:
-  - icon: 💡
-    title: Instant Server Start
-    details: On demand file serving over native ESM, no bundling required!
-  - icon: ⚡️
-    title: Lightning Fast HMR
-    details: Hot Module Replacement (HMR) that stays fast regardless of app size.
+  - icon: 🎨
+    title: Secondary development components
+    details: Secondary development components, based on the popular component library of vue for secondary development to make it more in line with business needs.
+    link: /components/button
+    linkText: View components
+  - icon: 📚
+    title: Learning documents
+    details: Learning documents, record the bits and pieces of front-end learning.
+    link: /docs/introduction
+    linkText: View documents
   - icon: 🛠️
-    title: Rich Features
-    details: Out-of-the-box support for TypeScript, JSX, CSS and more.
+    title: Software tool installation document
+    details: Software tool installation, record the software tool installation in the front-end development process.
+    link: /tools/docker
+    linkText: View documents
 
 ---
 

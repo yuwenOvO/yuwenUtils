@@ -6,7 +6,7 @@ const pkg = require("@yuwen/ui/package.json");
 
 export default defineConfig({
   lang: "zh-CN",
-  description: "一个好用的UI框架",
+  description: "前端学习笔记",
 
   themeConfig: {
     nav: nav(),
@@ -14,6 +14,7 @@ export default defineConfig({
     sidebar: {
       "/docs/": { base: "/docs/", items: sidebarGuide() },
       "/components/": { base: "/components/", items: sidebarReference() },
+      "/tools/": { base: "/tools/", items: sidebarTools() },
     },
 
     editLink: {
@@ -65,6 +66,11 @@ function nav(): DefaultTheme.NavItem[] {
       activeMatch: "/components/",
     },
     {
+      text: "工具文档",
+      link: "/tools/docker",
+      activeMatch: "/tools/",
+    },
+    {
       text: pkg.version,
       items: [
         {
@@ -98,6 +104,15 @@ function sidebarReference(): DefaultTheme.SidebarItem[] {
     {
       text: "radio组件",
       link: "radio",
+    },
+  ];
+}
+
+function sidebarTools(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: "docker安装",
+      link: "docker",
     },
   ];
 }
