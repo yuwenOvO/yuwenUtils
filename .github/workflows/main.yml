@@ -42,18 +42,18 @@ jobs:
         run: ls -l
 
       # 验证主机密钥
-      # - name: Verify Host Key
-      #   run: |
-      #     mkdir -p ~/.ssh
-      #     ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+      - name: Verify Host Key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
       # 将构建产物复制到远程服务器
-      # - name: Copy Files
-      #   run: |
-      #     echo "${{ secrets.SERVER_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-      #     chmod 600 ~/.ssh/id_ed25519
-      #     echo "删除老文件"
-      #     ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "rm -rf ${{ secrets.SERVER_PATH }}/* || echo '删除失败'"
+      - name: Copy Files
+        run: |
+          echo "${{ secrets.SERVER_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          echo "删除老文件"
+          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "rm -rf ${{ secrets.SERVER_PATH }}/* || echo '删除失败'"
 
-      #     echo "复制文件到远程服务器"
-      #     scp -r packages/docs/.vitepress/dist/* ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:${{ secrets.SERVER_PATH }}
+          echo "复制文件到远程服务器"
+          scp -r packages/docs/.vitepress/dist/* ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:${{ secrets.SERVER_PATH }}
