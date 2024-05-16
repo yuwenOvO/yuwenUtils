@@ -1,0 +1,59 @@
+# GitHub Actions工作流：yuwenUtils构建与部署
+# 当代码推送到'master'分支时触发
+
+name: yuwenUtils
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  # 构建并部署作业
+  build-and-deploy:
+    # 运行环境为最新版的Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出代码到工作目录
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 设置Node.js环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.13.1"
+
+      # 安装pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # 安装yuwenUtils依赖
+      - name: Install Dependencies
+        run: pnpm install
+
+      # 构建yuwenUtils的文档
+      - name: Build
+        run: pnpm run docs:build
+
+      # 打印构建产物
+      - name: List Files
+        run: ls -l
+
+      # 验证主机密钥
+      # - name: Verify Host Key
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      # 将构建产物复制到远程服务器
+      # - name: Copy Files
+      #   run: |
+      #     echo "${{ secrets.SERVER_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+      #     chmod 600 ~/.ssh/id_ed25519
+      #     echo "删除老文件"
+      #     ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "rm -rf ${{ secrets.SERVER_PATH }}/* || echo '删除失败'"
+
+      #     echo "复制文件到远程服务器"
+      #     scp -r packages/docs/.vitepress/dist/* ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:${{ secrets.SERVER_PATH }}
