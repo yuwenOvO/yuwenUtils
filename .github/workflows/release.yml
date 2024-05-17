@@ -22,8 +22,8 @@ jobs:
       - run: npm install -g pnpm@9.1.0
       - run: pnpm install
       - run: pnpm run utils:build
-      - uses: npx changelogithub
-        with:
+      - run: npx changelogithub
+        env:
           GITHUB_TOKEN: '${{ secrets.MY_GITHUB_TOKEN }}'
       - run: |
           cd ./packages/utils
