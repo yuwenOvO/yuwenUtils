@@ -1,5 +1,11 @@
 {
 	"compilerOptions": {
+		"target": "ES2021", // 编译后的目标版本
+		"module": "NodeNext", // 生成的模块规范
+		"moduleResolution": "NodeNext", // 模块解析策略
+
+		"outDir": "dist", // 编译后的输出目录
+
 		"composite": true, // 开启项目编译
 		"incremental": true, // 开启增量编译
 
@@ -11,6 +17,10 @@
 
 		"esModuleInterop": true, // 生成的模块使用 es6 的 export = 语法
 		"allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
+
+		"forceConsistentCasingInFileNames": true, // 文件名大小写敏感
+		"noImplicitAny": false, // 不允许隐式的 any 类型
+		"noImplicitThis": true, // 不允许 this 有隐式的 any 类型
 
 		"resolveJsonModule": true, // 支持导入 json 文件
 		"strict": true // 开启所有严格类型检查
