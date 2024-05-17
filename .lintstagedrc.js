@@ -13,6 +13,6 @@ module.exports = {
 	'*': async files => {
 		const filesToLint = await removeIgnoredFiles(files);
 		console.log('filesToLint:', filesToLint);
-		return [`eslint ${filesToLint} --max-warnings 0`];
+		return [`eslint ${filesToLint} --max-warnings 0 --fix`];
 	},
 };
