@@ -26,6 +26,10 @@ jobs:
           repo_token: '${{ secrets.MY_GITHUB_TOKEN }}'
           prerelease: false
           files: LICENSE
-      - run: cd ./packages/utils && pnpm publish --access public --no-git-checks
+      - run: |
+          cd ./packages/utils
+          ls -l
+          pnpm config set always-auth false
+          pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
