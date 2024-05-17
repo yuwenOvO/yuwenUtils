@@ -2,21 +2,16 @@
 	"name": "@yuwen/utils",
 	"version": "1.0.0",
 	"description": "A simple utils library",
+	"type": "module",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/es/src/index.d.ts",
-				"default": "./dist/es/index.js"
-			},
-			"require": {
-				"types": "./dist/cjs/src/index.d.ts",
-				"default": "./dist/cjs/index.js"
-			}
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
 		}
 	},
-	"types": "./dist/es/src/index.d.ts",
-	"main": "./dist/cjs/index.js",
-	"module": "./dist/es/index.js",
+	"types": "./dist/src/index.d.ts",
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
 	"files": [
 		"dist"
 	],

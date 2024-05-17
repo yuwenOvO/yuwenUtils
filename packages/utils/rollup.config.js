@@ -8,19 +8,7 @@ export default {
 	input: 'src/index.ts',
 	output: [
 		{
-			file: 'dist/cjs/index.js',
-			format: 'cjs',
-			name: '@yuwen/utils',
-			sourcemap: true,
-		},
-		{
-			file: 'dist/es/index.js',
-			format: 'es',
-			name: '@yuwen/utils',
-			sourcemap: true,
-		},
-		{
-			file: 'dist/umd/index.js',
+			file: 'dist/index.js',
 			format: 'umd',
 			name: '@yuwen/utils',
 			sourcemap: true,
@@ -31,7 +19,9 @@ export default {
 			extensions: ['.js', '.ts'],
 		}),
 		commonjs(),
-		typescript(), // 解析TypeScript
+		typescript({
+			tsconfig: 'tsconfig.json',
+		}), // 解析TypeScript
 		babel({
 			babelHelpers: 'bundled',
 			extensions: ['.js', '.ts'],
