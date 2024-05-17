@@ -10,7 +10,7 @@ export default {
 		{
 			file: 'dist/index.js',
 			format: 'umd',
-			name: '@yuwen/utils',
+			name: 'yuwen-utils',
 			sourcemap: true,
 		},
 	],

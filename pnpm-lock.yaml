@@ -81,7 +81,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@yuwen/utils':
+      yuwen-utils:
         specifier: workspace:*
         version: link:../utils
 

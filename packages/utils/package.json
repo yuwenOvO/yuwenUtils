@@ -1,5 +1,5 @@
 {
-	"name": "@yuwen/utils",
+	"name": "yuwen-utils",
 	"version": "1.0.0",
 	"description": "A simple utils library",
 	"type": "module",
@@ -38,7 +38,6 @@
 	"packageManager": "pnpm@9.1.0",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"preinstall": "node ../../scripts/preinstall.js",
 		"utils:build": "rollup --config"
 	},
 	"author": "yuwen",
