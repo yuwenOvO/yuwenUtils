@@ -16,7 +16,7 @@ declare module "vitepress" {
 }
 
 export const shared = defineConfig({
-  title: "Yuwei-UI",
+  title: "YuwenDocs",
 
   lastUpdated: true,
   cleanUrls: true,

@@ -1,16 +1,16 @@
 ---
 layout: home
 
-title: Yuwen Utils
+title: YuwenDocs
 titleTemplate: Front-end learning
 
 hero:
-  name: Yuwen Utils
+  name: YuwenDocs
   text: Front-end learning
   tagline: Front-end learning, record the bits and pieces of front-end learning
   image:
     src: /vitepress-logo-large.webp
-    alt: Yuwen Utils
+    alt: YuwenDocs
   actions:
     - theme: brand
       text: Get Started

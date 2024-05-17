@@ -1,16 +1,16 @@
 ---
 layout: home
 
-title: Yuwen Utils
+title: YuwenDocs
 titleTemplate: 前端学习
 
 hero:
-  name: Yuwen Utils
+  name: YuwenDocs
   text: 前端学习
   tagline: 前端学习，记录前端学习的点点滴滴
   image:
     src: /vitepress-logo-large.webp
-    alt: Yuwen Utils
+    alt: YuwenDocs
   actions:
     - theme: brand
       text: 起步
