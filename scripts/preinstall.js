@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /*
  * 这个脚本检查用户是否使用 pnpm 来安装包。
  */
