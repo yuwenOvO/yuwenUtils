@@ -21,6 +21,7 @@ jobs:
       - run: npm install -g pnpm@9.1.0
       - run: pnpm install
       - run: pnpm run utils:build
+      - run: cd ./packages/utils
       - uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: '${{ secrets.MY_GITHUB_TOKEN }}'
