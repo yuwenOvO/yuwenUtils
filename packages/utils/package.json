@@ -1,14 +1,51 @@
 {
 	"name": "@yuwen/utils",
 	"version": "1.0.0",
-	"description": "",
-	"type": "module",
+	"description": "A simple utils library",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/es/src/index.d.ts",
+				"default": "./dist/es/index.js"
+			},
+			"require": {
+				"types": "./dist/cjs/src/index.d.ts",
+				"default": "./dist/cjs/index.js"
+			}
+		}
+	},
+	"types": "./dist/es/src/index.d.ts",
+	"main": "./dist/cjs/index.js",
+	"module": "./dist/es/index.js",
+	"files": [
+		"dist"
+	],
+	"keywords": [
+		"utils",
+		"library",
+		"typescript",
+		"rollup",
+		"babel",
+		"esm",
+		"cjs"
+	],
+	"homepage": "https://www.moshangl.cn/",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/yuwenOvO/yuwenUtils.git"
+	},
+	"bugs": {
+		"url": "https://github.com/yuwenOvO/yuwenUtils/issues"
+	},
+	"engines": {
+		"node": ">=20.13.1"
+	},
+	"packageManager": "pnpm@9.1.0",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"preinstall": "node ../../scripts/preinstall.js",
 		"utils:build": "rollup --config"
 	},
-	"keywords": [],
 	"author": "yuwen",
 	"license": "MIT",
 	"devDependencies": {
