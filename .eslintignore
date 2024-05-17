@@ -1,6 +1,13 @@
 **/node_modules/
 
+.husky
+.git
+.github
+.vscode
+
 pnpm-lock.yaml
 
 **/.vitepress/cache/
 **/dist/
+package-lock.json
+package.json
