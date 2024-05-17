@@ -27,9 +27,10 @@ jobs:
           repo_token: '${{ secrets.MY_GITHUB_TOKEN }}'
           prerelease: false
           files: LICENSE
-      - run: cd ./packages/utils
-      - run: ls -l
-      - run: cat .npmrc
-      - run: npm publish --access public --no-git-checks
+      - run: |
+          cd ./packages/utils
+          ls -l
+          cat .npmrc
+          npm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
