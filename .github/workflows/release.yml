@@ -28,7 +28,6 @@ jobs:
           prerelease: false
           files: LICENSE
       - run: cd ./packages/utils
-      - run: npm ci
       - run: ls -l
       - run: cat .npmrc
       - run: npm publish --access public --no-git-checks
