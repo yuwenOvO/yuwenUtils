@@ -1,4 +1,4 @@
-import { add } from "@yuwen/utils";
+import { add } from '@yuwen/utils';
 
 function addOne(x: number) {
 	return add(x, 1);

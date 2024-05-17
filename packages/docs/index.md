@@ -35,7 +35,6 @@ features:
     details: 软件工具安装，记录前端开发过程中的软件工具安装。
     link: /tools/docker
     linkText: 查看文档
-
 ---
 
 <style>

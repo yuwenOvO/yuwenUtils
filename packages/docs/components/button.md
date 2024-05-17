@@ -4,7 +4,7 @@
 
 ```vue
 <template>
-  <yw-button />
+	<yw-button />
 </template>
 ```
 

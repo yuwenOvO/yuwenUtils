@@ -8,7 +8,8 @@
 		"docs:dev": "pnpm --filter @yuwen/docs docs:dev",
 		"docs:build": "pnpm --filter @yuwen/docs docs:build",
 		"docs:serve": "pnpm --filter @yuwen/docs docs:serve",
-		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts"
+		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts",
+		"format": "prettier --write ."
 	},
 	"keywords": [],
 	"author": "yuwen",
@@ -19,6 +20,7 @@
 		"@vue/eslint-config-prettier": "^9.0.0",
 		"@vue/eslint-config-typescript": "^13.0.0",
 		"eslint": "^8.56.0",
+		"prettier": "^3.2.5",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.4.5",
 		"vite": "^5.2.11"

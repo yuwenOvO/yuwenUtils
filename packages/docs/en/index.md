@@ -35,7 +35,6 @@ features:
     details: Software tool installation, record the software tool installation in the front-end development process.
     link: /tools/docker
     linkText: View documents
-
 ---
 
 <style>
