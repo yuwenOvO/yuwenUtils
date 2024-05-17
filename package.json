@@ -1,24 +1,24 @@
 {
-  "name": "yuwen",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "node ./scripts/preinstall.js",
-    "docs:dev": "pnpm --filter @yuwen/docs docs:dev",
-    "docs:build": "pnpm --filter @yuwen/docs docs:build",
-    "docs:serve": "pnpm --filter @yuwen/docs docs:serve"
-  },
-  "keywords": [],
-  "author": "yuwen",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^20.12.11",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.11"
-  },
-  "dependencies": {
-    "vue": "^3.4.27"
-  }
+	"name": "yuwen",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"preinstall": "node ./scripts/preinstall.js",
+		"docs:dev": "pnpm --filter @yuwen/docs docs:dev",
+		"docs:build": "pnpm --filter @yuwen/docs docs:build",
+		"docs:serve": "pnpm --filter @yuwen/docs docs:serve"
+	},
+	"keywords": [],
+	"author": "yuwen",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^20.12.11",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.4.5",
+		"vite": "^5.2.11"
+	},
+	"dependencies": {
+		"vue": "^3.4.27"
+	}
 }
