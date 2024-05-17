@@ -10,7 +10,8 @@
 		"docs:build": "pnpm --filter @yuwen/docs docs:build",
 		"docs:serve": "pnpm --filter @yuwen/docs docs:serve",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --max-warnings 0",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"cz": "cz"
 	},
 	"keywords": [],
 	"author": "yuwen",
@@ -22,6 +23,8 @@
 		"@types/node": "^20.12.11",
 		"@vue/eslint-config-prettier": "^9.0.0",
 		"@vue/eslint-config-typescript": "^13.0.0",
+		"commitizen": "^4.3.0",
+		"cz-conventional-changelog": "^3.3.0",
 		"eslint": "^8.56.0",
 		"eslint-plugin-vue": "^9.26.0",
 		"husky": "^9.0.11",
