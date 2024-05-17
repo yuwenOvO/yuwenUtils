@@ -26,7 +26,7 @@ sudo yum install -y docker-ce
 ```
 
 启动docker，且设置开机自启
-  
+
 ```shell
 sudo systemctl enable docker
 sudo systemctl start docker
