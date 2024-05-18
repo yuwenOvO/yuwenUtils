@@ -51,11 +51,11 @@ function nav(): DefaultTheme.NavItem[] {
 			items: [
 				{
 					text: 'Changelog',
-					link: 'https://www.bilibili.com/',
+					link: 'https://github.com/yuwenOvO/yuwenUtils/releases',
 				},
 				{
 					text: 'Contributing',
-					link: 'https://www.bilibili.com/',
+					link: 'https://github.com/yuwenOvO/yuwenUtils/graphs/contributors',
 				},
 			],
 		},
@@ -67,6 +67,10 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
 		{
 			text: 'Introduction',
 			link: 'introduction',
+		},
+		{
+			text: 'echarts',
+			link: 'echartsClick',
 		},
 	];
 }
