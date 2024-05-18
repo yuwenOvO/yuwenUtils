@@ -75,11 +75,11 @@ function nav(): DefaultTheme.NavItem[] {
 			items: [
 				{
 					text: '更新日志',
-					link: 'https://www.bilibili.com/',
+					link: 'https://github.com/yuwenOvO/yuwenUtils/releases',
 				},
 				{
 					text: '参与贡献',
-					link: 'https://www.bilibili.com/',
+					link: 'https://github.com/yuwenOvO/yuwenUtils/graphs/contributors',
 				},
 			],
 		},
@@ -91,6 +91,10 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
 		{
 			text: '简介',
 			link: 'introduction',
+		},
+		{
+			text: 'echarts柱状图阴影添加点击事件',
+			link: 'echartsClick',
 		},
 	];
 }
