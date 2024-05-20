@@ -18,7 +18,8 @@ export default defineConfig({
 		},
 
 		editLink: {
-			pattern: 'https://www.bilibili.com/',
+			pattern:
+				'https://github.com/yuwenOvO/yuwenUtils/edit/master/packages/docs/:path',
 			text: '在 GitHub 上编辑此页面',
 		},
 
