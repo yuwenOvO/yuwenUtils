@@ -19,7 +19,7 @@ export const shared = defineConfig({
 	title: 'YuwenDocs',
 
 	lastUpdated: true,
-	cleanUrls: true,
+	cleanUrls: false,
 	metaChunk: true,
 
 	markdown: {
