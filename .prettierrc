@@ -4,7 +4,7 @@
 	"trailingComma": "all",
 	"arrowParens": "avoid",
 	"tabWidth": 2,
-	"endOfLine": "lf",
+	"endOfLine": "crlf",
 	"bracketSpacing": true,
 	"singleQuote": true,
 	"overrides": [
