@@ -10,8 +10,9 @@ export default {
 	...DefaultTheme,
 	enhanceApp(etx: EnhanceAppContext) {
 		DefaultTheme.enhanceApp(etx);
-		etx.app.component(Button.name as string, Button);
 		etx.app.component('Demo', Demo);
 		etx.app.component('DemoBlock', DemoBlock);
+
+		etx.app.component(Button.name as string, Button);
 	},
 };

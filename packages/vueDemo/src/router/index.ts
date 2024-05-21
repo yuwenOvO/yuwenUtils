@@ -9,6 +9,14 @@ const router = createRouter({
 			name: 'home',
 			component: HomeView,
 		},
+		{
+			path: '/echartClick',
+			name: 'echartClick',
+			component: () => import('@/views/EchartClickView.vue'),
+			meta: {
+				title: 'EchartClick',
+			},
+		},
 	],
 });
 
