@@ -14,5 +14,6 @@
 
 		"resolveJsonModule": true, // 支持导入 json 文件
 		"strict": true // 开启所有严格类型检查
-	}
+	},
+	"exclude": ["node_modules", "dist"]
 }
