@@ -22,10 +22,7 @@ this.charts.getZr().on('mousemove', param => {
 
 this.charts.getZr().on('click', function (params) {
   let pointInPixel = [params.offsetX, params.offsetY];
-  let pointInGrid = this.charts.convertFromPixel(
-    { seriesIndex: 0 },
-    pointInPixel,
-  );
+  let pointInGrid = this.charts.convertFromPixel({ seriesIndex: 0 }, pointInPixel);
   // 柱状图-竖向(数据的索引值)
   const op = this.charts.getOption();
   const month = op.xAxis[0].data[pointInGrid[0]]; //获取点击的列名

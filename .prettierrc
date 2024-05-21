@@ -5,6 +5,7 @@
 	"arrowParens": "avoid",
 	"tabWidth": 2,
 	"endOfLine": "crlf",
+	"printWidth": 180,
 	"bracketSpacing": true,
 	"singleQuote": true,
 	"overrides": [
@@ -14,7 +15,7 @@
 		},
 		{
 			"files": "*.vue",
-			"options": { "printWidth": 100 }
+			"options": { "printWidth": 200 }
 		}
 	]
 }
