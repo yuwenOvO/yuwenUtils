@@ -66,9 +66,6 @@ importers:
       '@yuwen/ui':
         specifier: workspace:*
         version: link:../ui
-      '@yuwen/vuedemo':
-        specifier: workspace:*
-        version: link:../vueDemo
       vitepress:
         specifier: ^1.1.4
         version: 1.1.4(@algolia/client-search@4.23.3)(@types/node@20.12.11)(axios@1.7.1)(markdown-it-mathjax3@4.3.2)(postcss@8.4.38)(search-insights@2.13.0)(typescript@5.4.5)
