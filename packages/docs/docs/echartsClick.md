@@ -23,3 +23,7 @@ echartsInstance.getZr().on('click', event => {
 ## 完整代码
 
 <https://github.com/yuwenOvO/yuwenUtils/blob/master/packages/vueDemo/src/views/EchartClickView.vue>
+
+## 效果展示
+
+<iframe src="https://demo.moshangl.cn/echartClick" title="echarts-click" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"></iframe>
