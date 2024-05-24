@@ -18,8 +18,7 @@ export default defineConfig({
 		},
 
 		editLink: {
-			pattern:
-				'https://github.com/yuwenOvO/yuwenUtils/edit/master/packages/docs/:path',
+			pattern: 'https://github.com/yuwenOvO/yuwenUtils/edit/master/packages/docs/:path',
 			text: '在 GitHub 上编辑此页面',
 		},
 
@@ -96,6 +95,10 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
 		{
 			text: 'echarts柱状图阴影添加点击事件',
 			link: 'echartsClick',
+		},
+		{
+			text: '百度地图异步加载',
+			link: 'baiduMapAsync',
 		},
 	];
 }

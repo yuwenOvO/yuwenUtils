@@ -18,8 +18,7 @@ export default defineConfig({
 		},
 
 		editLink: {
-			pattern:
-				'https://github.com/yuwenOvO/yuwenUtils/edit/master/packages/docs/:path',
+			pattern: 'https://github.com/yuwenOvO/yuwenUtils/edit/master/packages/docs/:path',
 			text: 'Edit this page on GitHub',
 		},
 
@@ -72,6 +71,10 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
 		{
 			text: 'echarts',
 			link: 'echartsClick',
+		},
+		{
+			text: 'BaiduMapAsync',
+			link: 'baiduMapAsync',
 		},
 	];
 }
