@@ -1,8 +1,5 @@
 import { defineConfig } from 'vitepress';
-import {
-	demoblockPlugin,
-	demoblockVitePlugin,
-} from 'vitepress-theme-demoblock';
+import { demoblockPlugin, demoblockVitePlugin } from 'vitepress-theme-demoblock';
 
 declare module 'vitepress' {
 	export namespace DefaultTheme {
@@ -38,9 +35,7 @@ export const shared = defineConfig({
 
 	themeConfig: {
 		logo: { src: '/vitepress-logo-mini.svg', width: 24, height: 24 },
-		socialLinks: [
-			{ icon: 'github', link: 'https://github.com/yuwenOvO/yuwenUtils' },
-		],
+		socialLinks: [{ icon: 'github', link: 'https://github.com/yuwenOvO/yuwenUtils' }],
 
 		search: {
 			provider: 'local',
@@ -106,12 +101,7 @@ export const shared = defineConfig({
 		},
 	},
 
-	head: [
-		[
-			'link',
-			{ rel: 'icon', type: 'image/svg+xml', href: '/vitepress-logo-mini.svg' },
-		],
-	],
+	head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/vitepress-logo-mini.svg' }]],
 
 	vite: {
 		plugins: [demoblockVitePlugin()],
