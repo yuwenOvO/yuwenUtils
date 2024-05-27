@@ -17,6 +17,14 @@ const router = createRouter({
 				title: 'EchartClick',
 			},
 		},
+		{
+			path: '/canvasEditor',
+			name: 'canvasEditor',
+			component: () => import('@/views/CanvasEditView.vue'),
+			meta: {
+				title: 'CanvasEditor',
+			},
+		},
 	],
 });
 
