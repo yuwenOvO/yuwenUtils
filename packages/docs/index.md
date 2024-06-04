@@ -1,40 +1,40 @@
 ---
 layout: home
 
-title: YuwenDocs
+title: Docs
 titleTemplate: 前端学习
 
 hero:
-  name: YuwenDocs
-  text: 前端学习
-  tagline: 前端学习，记录前端学习的点点滴滴
+  name: Docs
+  text: Where there is a will there is a way
+  tagline: 杂七杂八的流水账中混杂着一些技术文
   image:
     src: /vitepress-logo-large.webp
-    alt: YuwenDocs
+    alt: Docs
   actions:
     - theme: brand
-      text: 起步
+      text: 探索
       link: /docs/introduction
     - theme: alt
       text: Github
       link: https://github.com/yuwenOvO/yuwenUtils
 
 features:
-  - icon: 🎨
-    title: 二开组件
-    details: 二开组件，基于vue流行的组件库进行二次开发，使其更符合业务需求。
-    link: /components/button
-    linkText: 查看组件
   - icon: 📚
-    title: 学习文档
-    details: 学习文档，记录前端学习的点点滴滴。
+    title: 一些博客文章
+    details: 杂七杂八的内容，胡乱一通写，成分很复杂
     link: /docs/introduction
-    linkText: 查看文档
+    linkText: 看看
+  - icon: 📝
+    title: 学习文档
+    details: 学习过程记录的一些笔记
+    link: /docs/introduction
+    linkText: 瞅瞅
   - icon: 🛠️
     title: 软件工具安装文档
     details: 软件工具安装，记录前端开发过程中的软件工具安装。
     link: /tools/docker
-    linkText: 查看文档
+    linkText: 瞧瞧
 ---
 
 <style>

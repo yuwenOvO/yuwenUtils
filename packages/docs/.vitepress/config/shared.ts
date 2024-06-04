@@ -13,7 +13,7 @@ declare module 'vitepress' {
 }
 
 export const shared = defineConfig({
-	title: 'YuwenDocs',
+	title: 'Docs',
 
 	lastUpdated: true,
 	cleanUrls: false,

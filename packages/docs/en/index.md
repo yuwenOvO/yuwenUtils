@@ -1,33 +1,33 @@
 ---
 layout: home
 
-title: YuwenDocs
+title: Docs
 titleTemplate: Front-end learning
 
 hero:
-  name: YuwenDocs
-  text: Front-end learning
-  tagline: Front-end learning, record the bits and pieces of front-end learning
+  name: Docs
+  text: Where there is a will there is a way
+  tagline: There are technical papers mixed in with the miscellany
   image:
     src: /vitepress-logo-large.webp
-    alt: YuwenDocs
+    alt: Docs
   actions:
     - theme: brand
-      text: Get Started
+      text: Explore
       link: /docs/introduction
     - theme: alt
       text: Github
       link: https://github.com/yuwenOvO/yuwenUtils
 
 features:
-  - icon: 🎨
-    title: Secondary development components
-    details: Secondary development components, based on the popular component library of vue for secondary development to make it more in line with business needs.
+  - icon: 📚
+    title: Some blog posts
+    details: A hodgepodge of content, written in a haphazard manner, with a complex composition.
     link: /components/button
     linkText: View components
-  - icon: 📚
+  - icon: 📝
     title: Learning documents
-    details: Learning documents, record the bits and pieces of front-end learning.
+    details: Some notes recorded during the study process
     link: /docs/introduction
     linkText: View documents
   - icon: 🛠️
