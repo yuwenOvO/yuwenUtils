@@ -25,6 +25,14 @@ const router = createRouter({
 				title: 'CanvasEditor',
 			},
 		},
+		{
+			path: '/baiduMap',
+			name: 'baiduMap',
+			component: () => import('@/views/BaiduMapView.vue'),
+			meta: {
+				title: 'BaiduMap',
+			},
+		},
 	],
 });
 
