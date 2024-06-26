@@ -132,8 +132,12 @@ class CanvasEdit {
 		if (this.darwType !== 'path') {
 			this.disableDraw();
 		} else {
+			this.closeEdit();
 			this.enableDraw();
 			return;
+		}
+		if (this.darwType !== 'text') {
+			this.closeEdit();
 		}
 		this.canvas!.off('mouse:down', this.mouseDown);
 		this.canvas!.off('mouse:move', this.mouseMove);
@@ -168,6 +172,21 @@ class CanvasEdit {
 	private disableDraw() {
 		this.canvas.isDrawingMode = false;
 		this.canvas.off('path:created');
+	}
+
+	/**
+	 * 关闭编辑
+	 */
+	private closeEdit() {
+		if (this.activeText) {
+			this.activeText.exitEditing();
+			if (!this.activeText.text) {
+				this.canvas.remove(this.activeText);
+			} else {
+				this.history.push(this.activeText);
+			}
+			this.activeText = null;
+		}
 	}
 
 	/**
