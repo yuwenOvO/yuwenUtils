@@ -12,4 +12,6 @@ module.exports = {
 		const filesToLint = await removeIgnoredFiles(files);
 		return [`eslint ${filesToLint} --max-warnings 0 --fix`, 'pretty-quick --staged'];
 	},
+	'*.{vue,css,less,scss}': ['stylelint --fix --allow-empty-input', 'pretty-quick --staged'],
+	'*.md': ['pretty-quick --staged'],
 };

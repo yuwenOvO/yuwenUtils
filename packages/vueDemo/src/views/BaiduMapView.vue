@@ -1,11 +1,11 @@
 <template>
-	<div class="mapQuery">
+	<div class="map-query">
 		<div class="content">
-			<div id="Map" ref="mapRef"></div>
+			<div id="map" ref="mapRef"></div>
 			<div class="search">
 				<input v-model="searchVal" @change="search" />
 			</div>
-			<div class="nowAddress">
+			<div class="now-address">
 				<div class="title"><b>当前选中地址：</b>{{ nowAddress.address }}</div>
 			</div>
 			<div class="list">
@@ -115,28 +115,31 @@ onMounted(() => {
 });
 </script>
 <style lang="scss" scoped>
-.mapQuery {
+.map-query {
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
 
 	.content {
+		position: relative;
 		width: 100%;
 		height: calc(100% - 50px);
-		position: relative;
+
 		.search {
+			box-sizing: border-box;
 			width: 100%;
 			height: 50px;
 			padding: 10px;
-			box-sizing: border-box;
 		}
-		#Map {
-			padding: 0px;
-			margin: 0px;
+
+		#map {
 			width: 100%;
 			height: 40vh;
 			min-height: 300px;
+			padding: 0;
+			margin: 0;
 		}
+
 		.mark {
 			position: absolute;
 			top: 270px;
@@ -146,17 +149,17 @@ onMounted(() => {
 			background-color: transparent;
 		}
 
-		.nowAddress {
+		.now-address {
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
 			width: 100%;
 			height: 30px;
 			padding: 0 10px;
-			box-sizing: border-box;
-			white-space: nowrap;
 			overflow: hidden;
 			overflow-x: auto;
 			text-overflow: ellipsis;
-			display: flex;
-			align-items: center;
+			white-space: nowrap;
 		}
 
 		.list {
@@ -167,16 +170,17 @@ onMounted(() => {
 
 			> ul {
 				width: 100%;
+
 				> li {
-					width: 100%;
-					min-height: 50px;
-					padding: 5px 10px;
 					box-sizing: border-box;
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
 					justify-content: center;
 					justify-content: space-between;
+					width: 100%;
+					min-height: 50px;
+					padding: 5px 10px;
 					border-top: 1px solid #eee;
 
 					.title {

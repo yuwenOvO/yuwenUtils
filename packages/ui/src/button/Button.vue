@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<button style="background-color: red; padding: 5px; box-sizing: border-box; border-radius: 4px; color: white">test</button>
+		<button style="box-sizing: border-box; padding: 5px; color: white; background-color: red; border-radius: 4px">test</button>
 	</div>
 </template>
 
