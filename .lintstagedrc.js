@@ -8,9 +8,8 @@ const removeIgnoredFiles = async files => {
 };
 
 module.exports = {
-	'*': async files => {
+	'*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts}': async files => {
 		const filesToLint = await removeIgnoredFiles(files);
-		console.log('filesToLint:', filesToLint);
-		return [`eslint ${filesToLint} --max-warnings 0 --fix`, 'prettier --write .'];
+		return [`eslint ${filesToLint} --max-warnings 0 --fix`, 'pretty-quick --staged'];
 	},
 };

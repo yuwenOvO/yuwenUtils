@@ -1,18 +1,9 @@
-**/node_modules/
-
+node_modules
+lib
+dist
 .husky
 .git
 .github
 .vscode
 
-pnpm-lock.yaml
-
 **/.vitepress/cache/
-**/dist/
-*.json
-*.md
-LICENSE
-*.ico
-*.html
-
-assets/
