@@ -16,7 +16,8 @@
 		"fabric": "^5.3.0",
 		"lodash": "^4.17.21",
 		"pinia": "^2.1.7",
-		"vue-router": "^4.3.0"
+		"vue-router": "^4.3.0",
+		"yuwen-utils": "workspace:*"
 	},
 	"devDependencies": {
 		"@tsconfig/node20": "^20.1.4",

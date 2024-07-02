@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"composite": true, // 开启项目编译
 		"incremental": true, // 开启增量编译
+		"tsBuildInfoFile": "./dist/.tsbuildinfo", // 增量编译的信息文件
 
 		"declaration": true, // 生成声明文件
 		"declarationMap": true, // 生成声明文件的映射文件

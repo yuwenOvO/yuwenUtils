@@ -1,17 +1,25 @@
 {
 	"name": "yuwen-utils",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A simple utils library",
 	"type": "module",
 	"exports": {
 		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.js"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"node": "./dist/es/index.js",
+				"default": "./dist/es/index.js"
+			},
+			"require": {
+				"types": "./dist/index.d.ts",
+				"node": "./dist/umd/index.js",
+				"default": "./dist/umd/index.js"
+			}
 		}
 	},
-	"types": "./dist/src/index.d.ts",
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
+	"types": "dist/index.d.ts",
+	"main": "dist/umd/index.js",
+	"module": "dist/es/index.js",
 	"files": [
 		"dist"
 	],
@@ -45,10 +53,14 @@
 	"devDependencies": {
 		"@babel/core": "^7.24.3",
 		"@babel/preset-env": "^7.24.3",
+		"@babel/preset-typescript": "^7.24.7",
 		"@rollup/plugin-babel": "^6.0.4",
 		"@rollup/plugin-commonjs": "^25.0.7",
+		"@rollup/plugin-json": "^6.1.0",
 		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-terser": "^0.4.4",
 		"@rollup/plugin-typescript": "^11.1.6",
-		"rollup": "^4.17.2"
+		"rollup": "^4.17.2",
+		"rollup-plugin-dts": "^6.1.1"
 	}
 }
