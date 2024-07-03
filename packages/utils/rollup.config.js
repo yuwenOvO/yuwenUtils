@@ -12,14 +12,14 @@ const config = [
 		input: 'src/index.ts',
 		output: [
 			{
-				file: 'dist/es/index.js',
+				file: 'dist/es/index.mjs',
 				format: 'es',
 				name: '@yuwena/utils',
 				sourcemap: true,
 			},
 			{
-				file: 'dist/umd/index.js',
-				format: 'umd',
+				file: 'dist/umd/index.cjs',
+				format: 'cjs',
 				name: '@yuwena/utils',
 				sourcemap: true,
 			},
