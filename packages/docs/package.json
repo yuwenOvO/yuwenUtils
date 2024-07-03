@@ -1,5 +1,5 @@
 {
-	"name": "@yuwen/docs",
+	"name": "@yuwena/docs",
 	"version": "1.0.0",
 	"description": "",
 	"type": "module",
@@ -13,7 +13,7 @@
 	"author": "yuwen",
 	"license": "MIT",
 	"devDependencies": {
-		"@yuwen/ui": "workspace:*",
+		"@yuwena/ui": "workspace:*",
 		"vitepress": "^1.1.4",
 		"vitepress-theme-demoblock": "^3.0.7"
 	}

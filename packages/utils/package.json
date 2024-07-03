@@ -1,6 +1,6 @@
 {
-	"name": "yuwen-utils",
-	"version": "1.0.4",
+	"name": "@yuwena/utils",
+	"version": "1.0.5",
 	"description": "A simple utils library",
 	"type": "module",
 	"exports": {
@@ -46,7 +46,8 @@
 	"packageManager": "pnpm@9.1.0",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"utils:build": "rollup --config"
+		"utils:build": "rollup --config",
+		"utils:publish": "pnpm run utils:build && npm publish --access public"
 	},
 	"author": "yuwen",
 	"license": "MIT",

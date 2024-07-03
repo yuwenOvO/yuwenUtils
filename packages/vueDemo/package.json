@@ -17,7 +17,7 @@
 		"lodash": "^4.17.21",
 		"pinia": "^2.1.7",
 		"vue-router": "^4.3.0",
-		"yuwen-utils": "workspace:*"
+		"@yuwena/utils": "workspace:*"
 	},
 	"devDependencies": {
 		"@tsconfig/node20": "^20.1.4",

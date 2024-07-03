@@ -1,3 +1,3 @@
-import { a } from 'yuwen-utils';
+import { a } from '@yuwena/utils';
 
-a();
+a('1');

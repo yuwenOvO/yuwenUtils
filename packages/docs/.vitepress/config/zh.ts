@@ -2,7 +2,7 @@ import { createRequire } from 'module';
 import { defineConfig, type DefaultTheme } from 'vitepress';
 
 const require = createRequire(import.meta.url);
-const pkg = require('@yuwen/ui/package.json');
+const pkg = require('@yuwena/ui/package.json');
 
 export default defineConfig({
 	lang: 'zh-CN',

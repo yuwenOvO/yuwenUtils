@@ -1,5 +1,5 @@
 {
-	"name": "@yuwen/ui",
+	"name": "@yuwena/ui",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.ts",
@@ -10,6 +10,6 @@
 	"author": "yuwen",
 	"license": "MIT",
 	"dependencies": {
-		"yuwen-utils": "workspace:*"
+		"@yuwena/utils": "workspace:*"
 	}
 }

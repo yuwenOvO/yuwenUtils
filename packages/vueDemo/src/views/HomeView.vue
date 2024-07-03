@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue';
-import { a } from 'yuwen-utils';
+import { a } from '@yuwena/utils';
 
 onMounted(() => {
 	a('222');

@@ -14,13 +14,13 @@ const config = [
 			{
 				file: 'dist/es/index.js',
 				format: 'es',
-				name: 'yuwen-utils',
+				name: '@yuwena/utils',
 				sourcemap: true,
 			},
 			{
 				file: 'dist/umd/index.js',
 				format: 'umd',
-				name: 'yuwen-utils',
+				name: '@yuwena/utils',
 				sourcemap: true,
 			},
 		],
@@ -30,6 +30,7 @@ const config = [
 			}),
 			typescript({
 				tsconfig: './tsconfig.json',
+				outputToFilesystem: false,
 			}), // 解析TypeScript
 			json(),
 			commonjs(),
