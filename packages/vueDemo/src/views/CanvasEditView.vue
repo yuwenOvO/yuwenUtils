@@ -15,7 +15,7 @@
 import testImg from '@/assets/test.png';
 import { onMounted } from 'vue';
 
-import CanvasEdit from '@/utils/canvasEdit';
+import { CanvasEdit } from '@yuwena/utils';
 
 let canvas: CanvasEdit | null = null;
 

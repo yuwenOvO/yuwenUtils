@@ -1,8 +1,12 @@
-import { fabric } from 'fabric';
-import type { IEvent } from 'fabric/fabric-impl';
+import * as fabric from 'fabric';
+import type { CanvasOptions, TPointerEventInfo, TOptions } from 'fabric';
 
 type DrawType = 'line' | 'arrow' | 'rect' | 'circle' | 'path' | 'text' | '';
 
+/**
+ * 画布编辑类
+ * @see 使用文档 https://www.moshangl.cn/
+ */
 class CanvasEdit {
 	canvas: fabric.Canvas; // canvas实例
 	private darwType: DrawType = ''; // 绘制类型
@@ -27,10 +31,10 @@ class CanvasEdit {
 
 	/**
 	 * 构造函数
-	 * @param canvasId canvasId
-	 * @param options fabric配置
+	 * @param canvasId canvas元素的id
+	 * @param options fabric配置参数(可选)
 	 */
-	constructor(canvasId: string, options?: fabric.ICanvasOptions) {
+	constructor(canvasId: string, options?: TOptions<CanvasOptions>) {
 		const dom = document.getElementById(canvasId);
 		if (!dom) {
 			throw new Error('canvasId不存在, 请检查canvasId是否正确, 或者是否已经挂载到dom上');
@@ -41,8 +45,8 @@ class CanvasEdit {
 	/**
 	 * 添加图片
 	 * @param url 图片地址
-	 * @param maxWidth 最大宽度
-	 * @param maxHeight 最大高度
+	 * @param maxWidth 最大宽度(可选) 不传默认600
+	 * @param maxHeight 最大高度(可选) 不传默认400
 	 */
 	addImage(url: string, maxWidth = 600, maxHeight = 400) {
 		if (!url) {
@@ -56,14 +60,19 @@ class CanvasEdit {
 		img.onload = () => {
 			const scaleX = maxWidth / img.width;
 			const scaleY = maxHeight / img.height;
-			fabric.Image.fromURL(url, img => {
-				img.set({
+			fabric.FabricImage.fromURL(
+				url,
+				{},
+				{
 					scaleX: scaleX,
 					scaleY: scaleY,
 					left: 0,
 					top: 0,
-				});
-				this.canvas.setBackgroundImage(img, this.canvas.renderAll.bind(this.canvas));
+					selectable: false,
+					hoverCursor: 'default',
+				},
+			).then(img => {
+				this.canvas.add(img);
 			});
 		};
 	}
@@ -101,6 +110,7 @@ class CanvasEdit {
 	saveAsImage() {
 		let src = this.canvas
 			.toDataURL({
+				multiplier: 1,
 				format: 'png',
 				quality: 1,
 			})
@@ -139,13 +149,13 @@ class CanvasEdit {
 		if (this.darwType !== 'text') {
 			this.closeEdit();
 		}
-		this.canvas!.off('mouse:down', this.mouseDown);
-		this.canvas!.off('mouse:move', this.mouseMove);
-		this.canvas!.off('mouse:up', this.mouseUp);
+		this.canvas.off('mouse:down', this.mouseDown);
+		this.canvas.off('mouse:move', this.mouseMove);
+		this.canvas.off('mouse:up', this.mouseUp);
 		if (this.darwType) {
-			this.canvas!.on('mouse:down', this.mouseDown);
-			this.canvas!.on('mouse:move', this.mouseMove);
-			this.canvas!.on('mouse:up', this.mouseUp);
+			this.canvas.on('mouse:down', this.mouseDown);
+			this.canvas.on('mouse:move', this.mouseMove);
+			this.canvas.on('mouse:up', this.mouseUp);
 		}
 	}
 
@@ -159,7 +169,7 @@ class CanvasEdit {
 		this.canvas.freeDrawingBrush.color = 'red';
 		this.canvas.freeDrawingBrush.width = 2;
 
-		this.canvas.on('path:created', (e: any) => {
+		this.canvas.on('path:created', e => {
 			e.path.selectable = false;
 			e.path.hoverCursor = 'default';
 			this.history.push(e.path);
@@ -171,7 +181,7 @@ class CanvasEdit {
 	 */
 	private disableDraw() {
 		this.canvas.isDrawingMode = false;
-		this.canvas.off('path:created');
+		this.canvas.on('path:created', () => {});
 	}
 
 	/**
@@ -191,9 +201,10 @@ class CanvasEdit {
 
 	/**
 	 * 鼠标按下事件
-	 * @param e 事件
+	 * @param e 鼠标事件
 	 */
-	private mouseDown = (e: IEvent) => {
+	private mouseDown = (e: TPointerEventInfo) => {
+		if (e.target && e.target.type === 'i-text') return;
 		if (this.darwType === 'line') {
 			this.drawLine().onMouseDown(e);
 		} else if (this.darwType === 'arrow') {
@@ -209,9 +220,9 @@ class CanvasEdit {
 
 	/**
 	 * 鼠标移动事件
-	 * @param e 事件
+	 * @param e 鼠标事件
 	 */
-	private mouseMove = (e: IEvent) => {
+	private mouseMove = (e: TPointerEventInfo) => {
 		if (this.darwType === 'line') {
 			this.drawLine().onMouseMove(e);
 		} else if (this.darwType === 'arrow') {
@@ -225,9 +236,7 @@ class CanvasEdit {
 
 	/**
 	 * 鼠标松开事件
-	 * @param e 事件
 	 */
-
 	private mouseUp = () => {
 		if (this.darwType === 'line') {
 			this.drawLine().onMouseUp();
@@ -245,10 +254,10 @@ class CanvasEdit {
 	 */
 	private drawLine() {
 		return {
-			onMouseDown: (e: IEvent) => {
+			onMouseDown: (e: TPointerEventInfo) => {
 				this.isDown = true;
-				const pointer = this.canvas.getPointer(e.e);
-				const points = [pointer.x, pointer.y, pointer.x, pointer.y];
+				const pointer = this.canvas.getViewportPoint(e.e);
+				const points: [number, number, number, number] = [pointer.x, pointer.y, pointer.x, pointer.y];
 				this.line = new fabric.Line(points, {
 					stroke: this.color,
 					strokeWidth: 2,
@@ -257,9 +266,9 @@ class CanvasEdit {
 				});
 				this.canvas.add(this.line);
 			},
-			onMouseMove: (e: IEvent) => {
+			onMouseMove: (e: TPointerEventInfo) => {
 				if (!this.isDown || !this.line) return;
-				const pointer = this.canvas.getPointer(e.e);
+				const pointer = this.canvas.getViewportPoint(e.e);
 				this.line.set({ x2: pointer.x, y2: pointer.y });
 				this.canvas.renderAll();
 			},
@@ -279,10 +288,10 @@ class CanvasEdit {
 	 */
 	private drawArrow() {
 		return {
-			onMouseDown: (e: IEvent) => {
+			onMouseDown: (e: TPointerEventInfo) => {
 				this.isDown = true;
-				const pointer = this.canvas.getPointer(e.e);
-				const arrowLinePoints = [pointer.x, pointer.y, pointer.x, pointer.y];
+				const pointer = this.canvas.getViewportPoint(e.e);
+				const arrowLinePoints: [number, number, number, number] = [pointer.x, pointer.y, pointer.x, pointer.y];
 				this.line = new fabric.Line(arrowLinePoints, {
 					fill: 'transparent',
 					stroke: this.color,
@@ -314,9 +323,9 @@ class CanvasEdit {
 				this.canvas!.add(this.arrow);
 				this.canvas!.renderAll();
 			},
-			onMouseMove: (e: IEvent) => {
+			onMouseMove: (e: TPointerEventInfo) => {
 				if (!this.isDown || !this.line || !this.arrow) return;
-				const pointer = this.canvas.getPointer(e.e);
+				const pointer = this.canvas.getViewportPoint(e.e);
 				this.line.set({
 					x2: pointer.x,
 					y2: pointer.y,
@@ -355,9 +364,9 @@ class CanvasEdit {
 	 */
 	private drawRect() {
 		return {
-			onMouseDown: (e: IEvent) => {
+			onMouseDown: (e: TPointerEventInfo) => {
 				this.isDown = true;
-				const pointer = this.canvas.getPointer(e.e);
+				const pointer = this.canvas.getViewportPoint(e.e);
 				this.rectOrigin = { x: pointer.x, y: pointer.y };
 				this.rect = new fabric.Rect({
 					left: pointer.x,
@@ -370,9 +379,9 @@ class CanvasEdit {
 				});
 				this.canvas.add(this.rect);
 			},
-			onMouseMove: (e: IEvent) => {
+			onMouseMove: (e: TPointerEventInfo) => {
 				if (!this.isDown || !this.rect || !this.rectOrigin) return;
-				const pointer = this.canvas.getPointer(e.e);
+				const pointer = this.canvas.getViewportPoint(e.e);
 				if (this.rectOrigin.x > pointer.x) {
 					this.rect.set({ left: Math.abs(pointer.x) });
 				}
@@ -399,9 +408,9 @@ class CanvasEdit {
 	 */
 	private drawEllipse() {
 		return {
-			onMouseDown: (e: IEvent) => {
+			onMouseDown: (e: TPointerEventInfo) => {
 				this.isDown = true;
-				const pointer = this.canvas.getPointer(e.e);
+				const pointer = this.canvas.getViewportPoint(e.e);
 				this.ellipseOrigin = { x: pointer.x, y: pointer.y };
 				this.ellipse = new fabric.Ellipse({
 					left: pointer.x,
@@ -416,9 +425,9 @@ class CanvasEdit {
 				});
 				this.canvas.add(this.ellipse);
 			},
-			onMouseMove: (e: IEvent) => {
+			onMouseMove: (e: TPointerEventInfo) => {
 				if (!this.isDown || !this.ellipse || !this.ellipseOrigin) return;
-				const pointer = this.canvas.getPointer(e.e);
+				const pointer = this.canvas.getViewportPoint(e.e);
 
 				if (this.ellipseOrigin.x > pointer.x) {
 					this.ellipse.set({ left: Math.abs(pointer.x) });
@@ -447,9 +456,8 @@ class CanvasEdit {
 	 */
 	private drawText() {
 		return {
-			onMouseDown: (e: IEvent) => {
-				if (e.target && e.target.type === 'i-text') return;
-				const pointer = this.canvas.getPointer(e.e);
+			onMouseDown: (e: TPointerEventInfo) => {
+				const pointer = this.canvas.getViewportPoint(e.e);
 				if (!this.activeText) {
 					this.activeText = new fabric.IText('', {
 						left: pointer.x,
@@ -461,10 +469,12 @@ class CanvasEdit {
 						hoverCursor: 'default',
 					});
 					this.canvas.add(this.activeText);
+					this.canvas.setActiveObject(this.activeText);
 					this.activeText.enterEditing();
 					this.activeText.hiddenTextarea?.focus();
 				} else {
 					this.activeText.exitEditing();
+
 					if (!this.activeText.text) {
 						this.canvas.remove(this.activeText);
 					} else {

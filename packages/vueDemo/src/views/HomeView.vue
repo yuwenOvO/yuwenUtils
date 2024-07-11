@@ -4,9 +4,11 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue';
-import { a } from '@yuwena/utils';
+
+import { WebSocketClient } from '@yuwena/utils';
 
 onMounted(() => {
-	a('222');
+	const ws = new WebSocketClient('ws://localhost:3000');
+	ws.connect();
 });
 </script>

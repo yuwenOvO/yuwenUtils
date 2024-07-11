@@ -1,12 +1,4 @@
-import aaa from './a.json';
+import CanvasEdit from './canvasEdit';
+import { WebSocketClient } from './websocket';
 
-/**
- * @description This is a function that logs "a"
- */
-export const a = (text: string) => {
-	console.log(aaa);
-	console.log('b');
-	console.log('========>', text);
-	const a = 1;
-	return a;
-};
+export { WebSocketClient, CanvasEdit };

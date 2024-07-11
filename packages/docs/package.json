@@ -15,6 +15,7 @@
 	"devDependencies": {
 		"@yuwena/ui": "workspace:*",
 		"vitepress": "^1.1.4",
-		"vitepress-theme-demoblock": "^3.0.7"
+		"vitepress-theme-demoblock": "^3.0.7",
+		"markdown-it-mathjax3": "^4.3.2"
 	}
 }
