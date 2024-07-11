@@ -7,4 +7,12 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: 'latest',
 	},
+	overrides: [
+		{
+			files: ['*.ts', '*.tsx', '*.vue'],
+			rules: {
+				'@typescript-eslint/no-explicit-any': 'error',
+			},
+		},
+	],
 };
