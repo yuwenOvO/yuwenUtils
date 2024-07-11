@@ -1,24 +1,24 @@
 {
 	"name": "@yuwena/utils",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "A simple utils library",
 	"exports": {
 		".": {
 			"import": {
-				"types": "./dist/index.d.ts",
-				"node": "./dist/es/index.mjs",
-				"default": "./dist/es/index.mjs"
+				"types": "./dist/index.d.mts",
+				"node": "./dist/index.mjs",
+				"default": "./dist/index.mjs"
 			},
 			"require": {
 				"types": "./dist/index.d.ts",
-				"node": "./dist/umd/index.cjs",
-				"default": "./dist/umd/index.cjs"
+				"node": "./dist/index.js",
+				"default": "./dist/index.js"
 			}
 		}
 	},
-	"types": "dist/index.d.ts",
-	"main": "dist/umd/index.cjs",
-	"module": "dist/es/index.mjs",
+	"types": "dist/index.d.mts",
+	"main": "dist/index.mjs",
+	"module": "dist/index.mjs",
 	"files": [
 		"dist",
 		"src"
@@ -27,8 +27,7 @@
 		"utils",
 		"library",
 		"typescript",
-		"rollup",
-		"babel",
+		"tsup",
 		"esm",
 		"cjs"
 	],
@@ -43,26 +42,20 @@
 	"engines": {
 		"node": ">=20.13.1"
 	},
-	"packageManager": "pnpm@9.1.0",
+	"packageManager": "pnpm@9.5.0",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"utils:build": "rimraf -rf dist && rollup --config --bundleConfigAsCjs",
-		"utils:publish": "rimraf -rf dist && pnpm run utils:build && npm publish --access public",
-		"utils:publish-verdaccio": "rimraf -rf dist && pnpm run utils:build && npm publish --registry http://122.51.0.103:4873 --access public"
+		"utils:build": "tsup",
+		"utils:publish": "pnpm run utils:build && npm publish --access public",
+		"utils:publish-verdaccio": "pnpm run utils:build && npm publish --registry http://122.51.0.103:4873 --access public"
 	},
 	"author": "yuwen",
 	"license": "MIT",
+	"peerDependencies": {
+		"fabric": "^6.0.2"
+	},
 	"devDependencies": {
-		"@babel/core": "^7.24.3",
-		"@babel/preset-env": "^7.24.3",
-		"@babel/preset-typescript": "^7.24.7",
-		"@rollup/plugin-babel": "^6.0.4",
-		"@rollup/plugin-commonjs": "^25.0.7",
-		"@rollup/plugin-json": "^6.1.0",
-		"@rollup/plugin-node-resolve": "^15.2.3",
-		"@rollup/plugin-terser": "^0.4.4",
-		"@rollup/plugin-typescript": "^11.1.6",
-		"rollup": "^4.17.2",
-		"rollup-plugin-dts": "^6.1.1"
+		"@swc/core": "^1.6.13",
+		"fabric": "^6.0.2",
+		"tsup": "^8.1.0"
 	}
 }
