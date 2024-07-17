@@ -34,9 +34,13 @@ const searchVal = ref(''); //搜索地址
 const mapRef = ref(null); //地图容器
 const BMap = window.BMap; //百度地图api
 const BMAP_STATUS_SUCCESS = window.BMAP_STATUS_SUCCESS; //百度地图api
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const baiduMap = shallowRef<any>(null); //百度地图实例
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const local = shallowRef<any>(null); //百度地图搜索实例
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const geoc = shallowRef<any>(null); //百度地图逆地址解析实例
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const searchLocalList = ref<any[]>([]); //搜索到的地址列表
 const nowAddress = ref({
 	address: '',
@@ -46,7 +50,9 @@ const nowAddress = ref({
 	},
 	title: '',
 }); //当前地址
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const point = ref<any>({}); //当前地址经纬度
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const infoWindowRef = ref(null) as any; //信息窗口
 // 初始化地图
 const initMap = () => {
@@ -55,6 +61,7 @@ const initMap = () => {
 	baiduMap.value.enableScrollWheelZoom(); //开启鼠标滚轮缩放
 	local.value = new BMap.LocalSearch(baiduMap.value, {
 		renderOptions: { autoViewport: true },
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		onSearchComplete: function (results: any) {
 			// 判断状态是否正确
 			if (local.value.getStatus() == BMAP_STATUS_SUCCESS) {
@@ -75,8 +82,10 @@ const search = debounce(() => {
 	local.value.search(searchVal.value);
 }, 500);
 // 点击地图事件 获取当前点击的经纬度 逆地址解析 获取当前地址 信息窗口 显示当前地址信息
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const clickMapHandler = (e: any) => {
 	const pt = e.point;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	geoc.value.getLocation(pt, function (rs: any) {
 		var addComp = rs.addressComponents;
 		nowAddress.value.title = addComp.street + addComp.streetNumber;
@@ -87,6 +96,7 @@ const clickMapHandler = (e: any) => {
 	});
 };
 // 设置标记点
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const setMarker = (point: any) => {
 	const info = new BMap.InfoWindow(infoWindowRef.value);
 	removeMarker();
@@ -102,6 +112,7 @@ const removeMarker = () => {
 	baiduMap.value.clearOverlays();
 };
 // 点击列表项跳转到目标地址
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const goto = (item: any) => {
 	nowAddress.value = item;
 	point.value = item.point;
