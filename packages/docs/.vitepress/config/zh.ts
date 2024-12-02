@@ -24,7 +24,7 @@ export default defineConfig({
 
 		footer: {
 			message: '基于 MIT 许可发布',
-			copyright: `版权所有 © 2024-${new Date().getFullYear()} yuwen`,
+			copyright: `版权所有 © 2024-${new Date().getFullYear()} yuwen  <a href='https://beian.miit.gov.cn' target='_blank'>赣ICP备2023005388号-2</a>`,
 		},
 
 		docFooter: {

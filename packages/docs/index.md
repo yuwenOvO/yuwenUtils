@@ -2,7 +2,7 @@
 layout: home
 
 title: Docs
-titleTemplate: 前端学习
+titleTemplate: 前端经验分享
 
 hero:
   name: Docs
