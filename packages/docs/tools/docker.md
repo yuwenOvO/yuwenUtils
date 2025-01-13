@@ -6,42 +6,79 @@ outline: deep
 
 ## Linux系统安装Docker{#linux-install}
 
-安装相关依赖
+### 设置Docker的仓库{#docker-repo}
 
 ```shell
-sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+# 添加官方GPG密钥
+sudo apt update # 更新软件源
+sudo apt install ca-certificates curl # 安装证书和curl工具
+sudo install -m 0755 -d /etc/apt/keyrings # 创建密钥目录
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc # 下载密钥
+sudo chmod a+r /etc/apt/keyrings/docker.asc # 设置密钥权限
+
+# 将docker的仓库添加到apt软件源中
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
 ```
 
-添加国内源，提高网络传输效率
+### 安装 docker-ce{#install-docker-ce}
 
 ```shell
-sudo yum-config-manager --add-repo https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
+sudo apt install docker-ce
 ```
 
-更新 yum 软件源缓存，并安装 docker-ce
+### 设置国内镜像源{#docker-mirror}
 
 ```shell
-sudo yum makecache fast
-sudo yum install -y docker-ce
+# 创建或修改/etc/docker/daemon.json文件
+sudo vim /etc/docker/daemon.json
+
+# 添加如下内容
+{
+  "registry-mirrors": [
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://hub-mirror.c.163.com",
+    "https://mirror.baidubce.com",
+    "https://ccr.ccs.tencentyun.com"
+  ]
+}
 ```
 
-启动docker，且设置开机自启
+### 重启docker{#restart-docker}
+
+```shell
+# 重启docker，注意由于走的是守护程序daemon，所以daemon进程也需要重启。
+sudo systemctl daemon-reload  #重启daemon进程
+sudo systemctl restart docker  #重启docker
+```
+
+### 验证国内镜像源是否生效{#verify-docker-mirror}
+
+```shell
+sudo docker info
+```
+
+> 如果`Registry Mirrors`中有你设置的镜像源地址，则说明设置成功。
+
+### 设置开机自启{#auto-start}
 
 ```shell
 sudo systemctl enable docker
-sudo systemctl start docker
 ```
 
-检查docker是否安装成功
+### 检查docker是否安装成功{#check-docker}
 
 ```shell
-docker run hello-world
+sudo docker ps
 ```
 
-查看docker版本信息
+### 查看docker版本信息{#docker-version}
 
 ```shell
-docker -v
+sudo docker -v
 ```
 
 ## Docker常用命令{#docker-command}
@@ -87,17 +124,17 @@ sudo systemctl enable docker
 #### 搜索镜像{#image-search}
 
 ```shell
-docker search [image-name]
+sudo docker search [image-name]
 ```
 
 #### 拉取镜像{#image-pull}
 
 ```shell
-docker pull [image-name]
+sudo docker pull [image-name]
 ```
 
 ::: tip
-`docker pull`命令默认拉取最新版本的镜像，如果需要拉取指定版本的镜像，可以使用`docker pull [image-name]:[tag]`命令。
+`sudo docker pull`命令默认拉取最新版本的镜像，如果需要拉取指定版本的镜像，可以使用`sudo docker pull [image-name]:[tag]`命令。
 <br />
 如果不知道版本号有哪些，可以去[Docker Hub](https://hub.docker.com/)查看。
 :::
@@ -105,19 +142,19 @@ docker pull [image-name]
 #### 查看本地镜像{#image-list}
 
 ```shell
-docker images
+sudo docker images
 ```
 
 #### 删除本地镜像{#image-delete}
 
 ```shell
-docker rmi [image-id]
+sudo docker rmi [image-id]
 #or
-docker rmi [image-name]:[tag]
+sudo docker rmi [image-name]:[tag]
 ```
 
 ::: tip
-为了准确删除你的目标镜像, 建议删除有多个版本存在的镜像时, 使用`docker rmi [image-name]:[tag]`命令。 如果二者镜像`ID`不同也可以使用镜像`ID`进行删除, 防止误删。
+为了准确删除你的目标镜像, 建议删除有多个版本存在的镜像时, 使用`sudo docker rmi [image-name]:[tag]`命令。 如果二者镜像`ID`不同也可以使用镜像`ID`进行删除, 防止误删。
 <br />
 删除镜像时，如果该镜像正在被容器使用，需要先停止容器，然后再删除镜像。
 <br />
@@ -132,7 +169,7 @@ docker rmi [image-name]:[tag]
 
 ```shell
 # 以onlyoffice/documentserver为例
-docker run -i -t -d -p 8000:80 \
+sudo docker run -i -t -d -p 8000:80 \
   --restart=always \
   -v /docker/onlyOffice/DocumentServer/logs:/var/log/onlyoffice \
   -v /docker/onlyOffice/DocumentServer/data:/var/www/onlyoffice/Data \
@@ -157,58 +194,58 @@ docker run -i -t -d -p 8000:80 \
 
 ```shell
 # 查看正在运行的容器列表
-docker ps
+sudo docker ps
 
 # 查看最近一次创建的容器
-docker ps -l
+sudo docker ps -l
 
 # 查看正在运行的容器ID列表
-docker ps -q
+sudo docker ps -q
 
 # 查看全部容器(包括已经停止的容器)
-docker ps -a
+sudo docker ps -a
 
 # 查看全部容器ID列表
-docker ps -aq
+sudo docker ps -aq
 ```
 
 #### 停止运行的容器{#container-stop}
 
 ```shell
 # 使用容器名停止
-docker stop [container-name]
+sudo docker stop [container-name]
 
 # 使用容器ID停止
-docker stop [container-id]
+sudo docker stop [container-id]
 
 # 使用容器ID停止多个正在运行的容器
-docker stop [container-id1] [container-id2] ...
+sudo docker stop [container-id1] [container-id2] ...
 ```
 
 #### 启动已停止的容器{#container-start}
 
 ```shell
 # 使用容器名启动
-docker start [container-name]
+sudo docker start [container-name]
 
 # 使用容器ID启动
-docker start [container-id]
+sudo docker start [container-id]
 
 # 使用容器ID启动多个已停止的容器
-docker start [container-id1] [container-id2] ...
+sudo docker start [container-id1] [container-id2] ...
 ```
 
 #### 删除容器{#container-delete}
 
 ```shell
 # 使用容器名删除
-docker rm [container-name]
+sudo docker rm [container-name]
 
 # 使用容器ID删除
-docker rm [container-id]
+sudo docker rm [container-id]
 
 # 使用容器ID删除多个容器
-docker rm [container-id1] [container-id2] ...
+sudo docker rm [container-id1] [container-id2] ...
 ```
 
 ::: tip
@@ -219,21 +256,21 @@ docker rm [container-id1] [container-id2] ...
 
 ```shell
 # 使用容器名重启
-docker restart [container-name]
+sudo docker restart [container-name]
 
 # 使用容器ID重启
-docker restart [container-id]
+sudo docker restart [container-id]
 
 # 使用容器ID重启多个容器
-docker restart [container-id1] [container-id2] ...
+sudo docker restart [container-id1] [container-id2] ...
 ```
 
 #### 进入容器{#container-enter}
 
 ```shell
 # 使用容器名进入
-docker exec -it [container-name] /bin/bash
+sudo docker exec -it [container-name] /bin/bash
 
 # 使用容器ID进入
-docker exec -it [container-id] /bin/bash
+sudo docker exec -it [container-id] /bin/bash
 ```
