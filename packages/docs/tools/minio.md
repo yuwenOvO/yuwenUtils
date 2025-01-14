@@ -85,7 +85,7 @@ sudo docker run -d \
 # 在 Nginx 配置文件中添加以下配置
 server {
   listen 443 ssl http2;
-  server_name img.moshangl.cn;
+  server_name "你的域名"; # 域名
 
   ssl_certificate '你的证书公钥'; # 证书公钥路径
   ssl_certificate_key '你的证书私钥'; # 证书私钥路径
@@ -120,6 +120,30 @@ server {
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
     proxy_pass https://xxxx:9090;
+  }
+
+  error_page 500 502 503 504 /50x.html;
+  location = /50x.html {
+    root   html;
+  }
+}
+
+server {
+  listen 443 ssl http2;
+  server_name "你的域名"; # 域名
+
+  ssl_certificate '你的证书公钥'; # 证书公钥路径
+  ssl_certificate_key '你的证书私钥'; # 证书私钥路径
+  ssl_session_timeout 5m;
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+  ssl_prefer_server_ciphers on;
+
+  location / {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass https://xxxxx:9000;
   }
 
   error_page 500 502 503 504 /50x.html;
