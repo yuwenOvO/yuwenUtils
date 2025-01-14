@@ -119,8 +119,16 @@ function sidebarReference(): DefaultTheme.SidebarItem[] {
 function sidebarTools(): DefaultTheme.SidebarItem[] {
 	return [
 		{
-			text: 'docker安装',
+			text: 'docker安装和使用',
 			link: 'docker',
+		},
+		{
+			text: 'minio安装和使用',
+			link: 'minio',
+		},
+		{
+			text: 'nvm安装和使用',
+			link: 'nvm',
 		},
 	];
 }
