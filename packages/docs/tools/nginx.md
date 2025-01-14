@@ -250,3 +250,92 @@ sudo systemctl disable nginx
 ```shell
 sudo systemctl daemon-reload
 ```
+
+### 配置nginx.conf
+
+```shell
+sudo vim /usr/local/nginx/conf/nginx.conf
+```
+
+在文件中添加以下内容：
+
+```conf
+#user  nobody;
+# 定义工作进程的数量
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+  # 设置每个 worker 进程可以处理的最大连接数
+  worker_connections  1024;
+}
+
+
+http {
+  include       mime.types; # 包含 mime.types 文件
+  default_type  application/octet-stream; # 默认 MIME 类型
+
+  sendfile        on; # 开启 sendfile
+
+  keepalive_timeout  65; # 客户端连接超时时间
+
+  gzip  on; # 开启 gzip 压缩
+  gzip_min_length 1k; # 设置最小压缩文件大小
+  gzip_buffers 32 4k; # 设置压缩缓冲区大小
+  gzip_http_version 1.1; # 设置压缩版本
+  gzip_comp_level 6; # 设置压缩等级
+  gzip_types       text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php application/javascript application/json; # 设置压缩类型
+  gzip_disable "MSIE [1-6]\."; # 禁用 IE6 的 gzip
+  gzip_vary on; # 开启 gzip vary
+
+  server {
+    listen       80; # 监听 80 端口
+    listen       [::]:80; # 监听 IPv6 80 端口
+    server_name  xxx.xx www.xxx.xx; # 设置域名
+    # 将所有http请求重定向到https
+    return 301 https://$server_name$request_uri;
+  }
+
+  server {
+    listen 443 ssl http2; # 监听 443 端口，启用 SSL 和 HTTP/2
+    server_name xxx.xx www.xxx.xx; # 设置域名
+
+    ssl_certificate '你的证书路径'; # 设置证书路径
+    ssl_certificate_key '你的证书密钥路径'; # 设置证书密钥路径
+    ssl_session_timeout 5m; # 设置 SSL 会话超时时间
+    ssl_protocols TLSv1.2 TLSv1.3; # 设置 SSL 协议版本
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; # 设置 SSL 加密算法
+    ssl_prefer_server_ciphers on; # 设置优先使用服务器端加密算法
+
+    location / {
+      try_files $uri $uri/ @router; # 尝试查找文件，如果找不到则重定向到 @router
+      root   '你的前端路径'; # 设置根目录
+      index  index.html index.htm; # 设置默认首页
+    }
+
+    location @router {
+      rewrite ^.*$ /index.html last; # 重定向到 index.html
+    }
+
+    location /api {
+      rewrite ^/api/(.*)$ /$1 break; # 重写 /api/ 为 /
+      proxy_set_header Host $host; # 设置请求头
+      proxy_set_header X-Real-IP $remote_addr; # 设置请求头
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # 设置请求头
+      # 反向代理到后端的服务地址
+      proxy_pass http://xxxxx:xx; # 设置代理地址
+    }
+
+    error_page 500 502 503 504 /50x.html; # 设置错误页面
+    location = /50x.html {
+      root   html; # 设置根目录
+    }
+  }
+}
+```
