@@ -130,5 +130,9 @@ function sidebarTools(): DefaultTheme.SidebarItem[] {
 			text: 'nvm安装和使用',
 			link: 'nvm',
 		},
+		{
+			text: 'Nginx安装和使用',
+			link: 'nginx',
+		},
 	];
 }
