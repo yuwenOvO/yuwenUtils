@@ -135,6 +135,10 @@ function sidebarTools(): DefaultTheme.SidebarItem[] {
 			link: 'nginx',
 		},
 		{
+			text: 'Mysql安装和使用',
+			link: 'mysql',
+		},
+		{
 			text: '定时任务crontab',
 			link: 'crontab',
 		},

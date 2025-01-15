@@ -87,6 +87,9 @@ server {
   listen 443 ssl http2;
   server_name "你的域名"; # 域名
 
+  # 上传文件大小限制 2G (可根据需求调整)
+  client_max_body_size 2G;
+
   ssl_certificate '你的证书公钥'; # 证书公钥路径
   ssl_certificate_key '你的证书私钥'; # 证书私钥路径
   ssl_session_timeout 5m; # 会话超时时间

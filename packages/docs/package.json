@@ -14,8 +14,9 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@yuwena/ui": "workspace:*",
+		"markdown-it-mathjax3": "^4.3.2",
+		"medium-zoom": "^1.1.0",
 		"vitepress": "^1.1.4",
-		"vitepress-theme-demoblock": "^3.0.7",
-		"markdown-it-mathjax3": "^4.3.2"
+		"vitepress-theme-demoblock": "^3.0.7"
 	}
 }
