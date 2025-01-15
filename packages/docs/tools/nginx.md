@@ -259,7 +259,7 @@ sudo vim /usr/local/nginx/conf/nginx.conf
 
 在文件中添加以下内容：
 
-```conf
+```txt
 #user  nobody;
 # 定义工作进程的数量
 worker_processes  1;

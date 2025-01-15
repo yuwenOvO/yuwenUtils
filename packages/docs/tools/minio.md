@@ -81,7 +81,7 @@ sudo docker run -d \
 
 ### 配置 Nginx 反向代理
 
-```conf
+```txt
 # 在 Nginx 配置文件中添加以下配置
 server {
   listen 443 ssl http2;
