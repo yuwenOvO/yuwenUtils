@@ -142,5 +142,9 @@ function sidebarTools(): DefaultTheme.SidebarItem[] {
 			text: '定时任务crontab',
 			link: 'crontab',
 		},
+		{
+			text: 'v2rayA安装和使用',
+			link: 'v2rayA',
+		},
 	];
 }
