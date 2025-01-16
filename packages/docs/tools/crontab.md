@@ -90,6 +90,12 @@ sudo service cron restart
 sudo service cron status
 ```
 
+### 查看 Crontab 日志
+
+```shell
+sudo grep CRON /var/log/syslog
+```
+
 ## Crontab 示例
 
 ### 每天凌晨 2 点执行备份脚本
