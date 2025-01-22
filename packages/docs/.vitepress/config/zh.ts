@@ -139,6 +139,10 @@ function sidebarTools(): DefaultTheme.SidebarItem[] {
 			link: 'mysql',
 		},
 		{
+			text: 'Redis安装和使用',
+			link: 'redis',
+		},
+		{
 			text: '定时任务crontab',
 			link: 'crontab',
 		},
