@@ -150,5 +150,9 @@ function sidebarTools(): DefaultTheme.SidebarItem[] {
 			text: 'v2rayA安装和使用',
 			link: 'v2rayA',
 		},
+		{
+			text: 'PostgreSQL安装和使用',
+			link: 'postgresql',
+		},
 	];
 }
