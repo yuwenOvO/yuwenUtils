@@ -10,8 +10,12 @@ MinIO 是一款热门、轻量、开源的对象存储方案，完美兼容 AWS 
 
 ### 拉取 MinIO 镜像
 
+::: tip
+注意：最新的 MinIO 镜像 移除了大部分的webUI 功能，建议使用 `minio/minio:RELEASE.2025-04-22T22-12-26Z` 版本。
+:::
+
 ```shell
-sudo docker pull minio/minio
+sudo docker pull minio/minio:RELEASE.2025-04-22T22-12-26Z
 ```
 
 ### 创建 MinIO 目录
