@@ -15,6 +15,7 @@ export default defineConfig({
 			'/docs/': { base: '/docs/', items: sidebarGuide() },
 			'/components/': { base: '/components/', items: sidebarReference() },
 			'/tools/': { base: '/tools/', items: sidebarTools() },
+			'/nestjsDocs/': { base: '/nestjsDocs/', items: sidebarNestjs() },
 		},
 
 		editLink: {
@@ -59,6 +60,11 @@ function nav(): DefaultTheme.NavItem[] {
 			text: '文档',
 			link: '/docs/introduction',
 			activeMatch: '/docs/',
+		},
+		{
+			text: 'nestjs文档',
+			link: '/nestjsDocs/introduction',
+			activeMatch: '/nestjsDocs/',
 		},
 		{
 			text: '组件',
@@ -153,6 +159,15 @@ function sidebarTools(): DefaultTheme.SidebarItem[] {
 		{
 			text: 'PostgreSQL安装和使用',
 			link: 'postgresql',
+		},
+	];
+}
+
+function sidebarNestjs(): DefaultTheme.SidebarItem[] {
+	return [
+		{
+			text: '简介',
+			link: 'introduction',
 		},
 	];
 }
