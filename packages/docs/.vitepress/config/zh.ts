@@ -169,5 +169,9 @@ function sidebarNestjs(): DefaultTheme.SidebarItem[] {
 			text: '简介',
 			link: 'introduction',
 		},
+		{
+			text: '集成winston日志输出',
+			link: 'winston-integration',
+		},
 	];
 }
