@@ -170,8 +170,16 @@ function sidebarNestjs(): DefaultTheme.SidebarItem[] {
 			link: 'introduction',
 		},
 		{
+			text: '常见配置',
+			link: 'common-configuration',
+		},
+		{
 			text: '集成winston日志输出',
 			link: 'winston-integration',
+		},
+		{
+			text: '集成swagger文档',
+			link: 'swagger-integration',
 		},
 	];
 }
