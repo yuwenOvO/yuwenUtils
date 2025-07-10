@@ -185,5 +185,9 @@ function sidebarNestjs(): DefaultTheme.SidebarItem[] {
 			text: '集成prism数据库ORM',
 			link: 'prism-integration',
 		},
+		{
+			text: '拦截器的使用',
+			items: [{ text: '接口拦截器', link: 'interceptor/api-interceptor' }],
+		},
 	];
 }
