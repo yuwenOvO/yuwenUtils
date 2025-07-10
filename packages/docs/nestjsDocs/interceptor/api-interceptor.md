@@ -22,7 +22,7 @@ import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nes
 import { map } from 'rxjs/operators';
 
 @Injectable()
-export class LoggerInterceptor implements NestInterceptor {
+export class ApiInterceptor implements NestInterceptor {
   constructor(private readonly operationLogService: OperationLogService) {}
 
   intercept(context: ExecutionContext, next: CallHandler) {
@@ -111,14 +111,35 @@ export class OperationLogService {
 
 ```typescript
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
-import { LoggerInterceptor } from 'src/common/interceptors/api.interceptor';
+import { ApiInterceptor } from 'src/common/interceptors/api.interceptor';
 
 @Controller('app')
-@UseInterceptors(LoggerInterceptor)
+@UseInterceptors(ApiInterceptor)
 export class AppController {
   @Get()
   getHello(): string {
     return 'Hello World!';
   }
 }
+```
+
+## 3. 或者在 `app.module.ts` 中全局注册拦截器
+
+```typescript
+// ...existing code...
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { ApiInterceptor } from './common/interceptor/api.interceptor';
+
+@Module({
+  // ...existing code...
+  providers: [
+    // ...existing providers...
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ApiInterceptor,
+    },
+  ],
+})
+export class AppModule {}
+// ...existing code...
 ```
