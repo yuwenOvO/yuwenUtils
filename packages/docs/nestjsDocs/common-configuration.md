@@ -52,3 +52,12 @@ const app = await NestFactory.create(AppModule);
 app.enableCors();
 // ....
 ```
+
+## 3. 配置全局前缀
+
+在 `main.ts` 中设置全局前缀：
+
+```typescript
+const app = await NestFactory.create(AppModule);
+app.setGlobalPrefix('api'); // 设置全局前缀为 /api
+```

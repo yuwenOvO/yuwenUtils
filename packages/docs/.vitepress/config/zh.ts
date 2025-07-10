@@ -181,5 +181,9 @@ function sidebarNestjs(): DefaultTheme.SidebarItem[] {
 			text: '集成swagger文档',
 			link: 'swagger-integration',
 		},
+		{
+			text: '集成prism数据库ORM',
+			link: 'prism-integration',
+		},
 	];
 }
