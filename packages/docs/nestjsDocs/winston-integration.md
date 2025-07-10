@@ -41,17 +41,8 @@ import chalk from 'chalk';
 import { createLogger, format, transports } from 'winston';
 import * as DailyRotateFile from 'winston-daily-rotate-file';
 
-// 定义日志级别颜色
-const levelsColors = {
-  error: 'red',
-  warn: 'yellow',
-  info: 'green',
-  debug: 'blue',
-  verbose: 'cyan',
-};
-
 const winstonLogger = createLogger({
-  format: format.combine(format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), format.errors({ stack: true }), format.splat(), format.json()),
+  format: format.combine(format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' })),
   transports: [
     new DailyRotateFile({
       filename: 'logs/errors/error-%DATE%.log', // 日志名称，占位符 %DATE% 取值为 datePattern 值。
@@ -60,9 +51,8 @@ const winstonLogger = createLogger({
       maxSize: '20m', // 设置日志文件的最大大小，m 表示 mb 。
       level: 'error', // 日志类型，此处表示只记录错误日志。
       format: format.combine(
-        format.simple(),
         format.printf(info => {
-          return `${String(info.timestamp)} ${String(info.message)}`;
+          return `${String(info.timestamp)}\n${'*'.repeat(100)}\n错误信息: ${String(info.message)}\n堆栈信息: ${String(info.stack)}\n${'*'.repeat(100)}\n`;
         }),
       ),
     }),
@@ -73,9 +63,8 @@ const winstonLogger = createLogger({
       maxSize: '20m',
       level: 'warn',
       format: format.combine(
-        format.simple(),
         format.printf(info => {
-          return `${String(info.timestamp)} ${String(info.message)}`;
+          return `${String(info.timestamp)}\n${'*'.repeat(100)}\n警告信息: ${String(info.message)}\n${'*'.repeat(100)}\n`;
         }),
       ),
     }),
@@ -86,30 +75,22 @@ const winstonLogger = createLogger({
       maxSize: '20m',
       level: 'info',
       format: format.combine(
-        format.simple(),
         format.printf(info => {
-          return `${String(info.timestamp)} ${String(info.message)}`;
+          if (info.level === 'error') {
+            return `${String(info.timestamp)}\n${'*'.repeat(100)}\n${'='.repeat(20)}>错误信息: ${String(info.message)}\n${'='.repeat(20)}>堆栈信息: ${String(info.stack)}\n${'*'.repeat(100)}\n`;
+          } else if (info.level === 'warn') {
+            return `${String(info.timestamp)}\n${'*'.repeat(100)}\n${'='.repeat(20)}>警告信息: ${String(info.message)}\n${'*'.repeat(100)}\n`;
+          } else {
+            return `${String(info.timestamp)} ${String(info.message)}`;
+          }
         }),
       ),
     }),
     new transports.Console({
       format: format.combine(
-        format.colorize({
-          colors: levelsColors,
-        }),
-        format.simple(),
         format.printf(info => {
-          const symbols = Object.getOwnPropertySymbols(info);
-
-          const levelSymbol = symbols.find(s => s.toString() === 'Symbol(level)');
-          const messageSymbol = symbols.find(s => s.toString() === 'Symbol(message)');
-
-          const level = levelSymbol ? (info[levelSymbol] as string) : 'debug';
-          const message = messageSymbol ? info[messageSymbol] : '';
-
-          const chalkColor = getChalkColor(level);
-
-          return `${chalkColor(info.timestamp)} ${chalkColor(message)}`;
+          const chalkColor = getChalkColor(info.level);
+          return `${chalkColor(info.timestamp)} ${chalkColor(info.message)}`;
         }),
       ),
       level: 'debug',
