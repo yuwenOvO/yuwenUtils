@@ -186,6 +186,10 @@ function sidebarNestjs(): DefaultTheme.SidebarItem[] {
 			link: 'prism-integration',
 		},
 		{
+			text: '集成cache-manager缓存和redis',
+			link: 'cache-manager-integration',
+		},
+		{
 			text: '拦截器的使用',
 			items: [{ text: '接口拦截器', link: 'interceptor/api-interceptor' }],
 		},
