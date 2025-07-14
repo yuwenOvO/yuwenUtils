@@ -189,5 +189,12 @@ function sidebarNestjs(): DefaultTheme.SidebarItem[] {
 			text: '拦截器的使用',
 			items: [{ text: '接口拦截器', link: 'interceptor/api-interceptor' }],
 		},
+		{
+			text: '过滤器的使用',
+			items: [
+				{ text: '全局异常过滤器', link: 'filter/global-exception-filter' },
+				{ text: 'prisma 异常过滤器', link: 'filter/prisma-exception-filter' },
+			],
+		},
 	];
 }
