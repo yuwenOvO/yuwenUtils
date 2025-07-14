@@ -61,3 +61,22 @@ app.enableCors();
 const app = await NestFactory.create(AppModule);
 app.setGlobalPrefix('api'); // 设置全局前缀为 /api
 ```
+
+## 4. 配置 body-parser 中间件，增加请求体大小限制
+
+在 `main.ts` 中配置 body-parser 中间件：
+
+```typescript
+import * as bodyParser from 'body-parser';
+
+// ....
+
+const app = await NestFactory.create(AppModule);
+// 配置 body-parser 中间件，增加请求体大小限制
+app.use(bodyParser.json({ limit: '500mb' }));
+app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));
+
+// ....
+```
+
+在这个示例中，我们将请求体的大小限制设置为 500MB。
