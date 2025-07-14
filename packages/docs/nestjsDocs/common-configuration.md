@@ -67,7 +67,7 @@ app.setGlobalPrefix('api'); // 设置全局前缀为 /api
 在 `main.ts` 中配置 body-parser 中间件：
 
 ```typescript
-import * as bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 
 // ....
 
